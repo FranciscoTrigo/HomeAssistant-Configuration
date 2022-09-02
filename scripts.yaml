@@ -1,0 +1,15 @@
+testactionable:
+  alias: Confirmable Notification
+  use_blueprint:
+    path: homeassistant/confirmable_notification.yaml
+    input:
+      notify_device: b824cb8afc8858f2af7f952f69beead5
+      title: Look at me
+      message: Hola gran amigo!
+      confirm_action:
+      - type: toggle
+        device_id: 2d06d85739439d60a6854feb59e633cc
+        entity_id: light.elgato_ring
+        domain: light
+      dismiss_action: []
+  mode: single

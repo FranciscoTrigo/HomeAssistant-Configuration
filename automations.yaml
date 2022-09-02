@@ -1,0 +1,65 @@
+- id: '1661931404652'
+  alias: Bathroom light ON motion and OFF
+  description: Light turns ON on motion and then turns OFF
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.lumi_lumi_sensor_motion_aq2_iaszone_2
+      light_target:
+        entity_id: light.luz_bano
+      no_motion_wait: 1119
+- id: '1661956592428'
+  alias: Luz pasillo MOTION
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.lumi_lumi_sensor_motion_aq2_iaszone
+      light_target:
+        entity_id: light.luz_pasillo_light_3
+- id: '1661972913994'
+  alias: Luces Lavado
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.lumi_lumi_sensor_motion_iaszone
+      light_target:
+        entity_id:
+        - light.lavado_2_light
+        - light.the_home_depot_ecosmart_zbt_a19_cct_bulb_light
+      no_motion_wait: 484
+- id: '1662018459879'
+  alias: Test Zone
+  description: ''
+  use_blueprint:
+    path: homeassistant/notify_leaving_zone.yaml
+    input:
+      person_entity: person.mama
+      zone_entity: zone.home
+      notify_device: b824cb8afc8858f2af7f952f69beead5
+- id: '1662042818779'
+  alias: Boton ma
+  description: ''
+  trigger:
+  - device_id: 9cb8c25209451391fc5dfaec62b8cbf6
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_1
+  - device_id: 9cb8c25209451391fc5dfaec62b8cbf6
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_2
+  condition: []
+  action:
+  - type: toggle
+    device_id: 0db43a00b3d6feae9c3e3c19ae86aaee
+    entity_id: light.focote_1
+    domain: light
+  - type: toggle
+    device_id: 762a7c1c40e64eadb0898fbdfe1c6861
+    entity_id: light.frank
+    domain: light
+  mode: single
